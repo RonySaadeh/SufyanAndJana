@@ -1,0 +1,1416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Sufyan and Jana invite you to celebrate their wedding - Saturday 10 October 2026, Shater Hassan Palace, Ras Masqa El Chmeliyeh, Lebanon, from 7 in the evening.">
+<!--A:HEAD-->
+<title>Sufyan &amp; Jana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&amp;family=Playfair+Display:ital,wght@1,400;1,500&amp;family=Jost:wght@300;400;500&amp;display=swap">
+<style>
+/* ==========================================================
+   Sufyan & Jana - 10 October 2026
+   Oat paper / sand / olive ink / sage foliage / antique brass
+   ========================================================== */
+:root{
+  --paper:#EFE7DA;
+  --paper-2:#E9E0D1;
+  --paper-3:#DFD2BD;
+  --ink:#332F28;
+  --ink-2:#6B6355;
+  --ink-3:#9A9180;
+  --olive:#7E8663;
+  --brass:#A8853F;
+  --brass-2:#8A6C2E;
+  --line:rgba(51,47,40,.15);
+  --line-brass:rgba(168,133,63,.32);
+  --serif:'Bodoni Moda',Didot,'Bodoni MT','Times New Roman',serif;
+  /* halfway between the engraved roman and a full calligraphic script */
+  --display:'Playfair Display',Georgia,'Times New Roman',serif;
+  --sans:'Jost',Futura,'Avenir Next','Helvetica Neue',system-ui,sans-serif;
+  --measure:36rem;
+  --shell:min(76rem,100% - clamp(1.5rem,5vw,4rem));
+  --band:clamp(5.5rem,11vh + 2rem,10rem);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+/* author display rules beat the UA [hidden] rule, so restate it louder */
+[hidden]{display:none !important}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:clamp(1rem,.97rem + .18vw,1.0625rem);
+  line-height:1.75;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* paper grain */
+body::after{
+  content:"";
+  position:fixed;inset:0;z-index:5;pointer-events:none;
+  opacity:.05;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+#petals{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+#progress{
+  position:fixed;top:0;left:0;height:2px;width:0;z-index:30;
+  background:linear-gradient(90deg,rgba(168,133,63,0),var(--brass) 35%,var(--brass-2));
+}
+
+.page{position:relative;z-index:2}
+
+/* ---------- typographic atoms ---------- */
+.eyebrow{
+  font-family:var(--sans);font-weight:500;
+  font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--brass-2);margin:0;
+}
+.section-title{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(1.7rem,1.1rem + 2.4vw,3rem);
+  line-height:1.24;margin:0;text-wrap:balance;
+}
+.lede{max-width:var(--measure);margin:0 auto;color:var(--ink-2);text-wrap:pretty}
+em.it{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--ink);font-size:1.06em}
+
+/* ---------- layout ---------- */
+section{padding-block:var(--band);position:relative}
+.shell{width:var(--shell);margin-inline:auto}
+.stack{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.3rem}
+.band{background:var(--paper-3)}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100svh;padding-block:clamp(3rem,9vh,5.5rem) 3rem;
+  display:grid;grid-template-rows:1fr auto;align-content:center;gap:2rem;
+}
+.hero-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.arch{width:min(56rem,100%);height:auto;display:block;margin-bottom:clamp(-4.5rem,-7vw,-2rem)}
+
+/* a romantic italic - calligraphic movement, but it still reads as a serif */
+.names{
+  font-family:var(--display);font-style:italic;font-weight:400;
+  font-size:clamp(3rem,1.2rem + 11vw,8.5rem);
+  line-height:1.08;margin:0;letter-spacing:.005em;
+  display:flex;align-items:baseline;justify-content:center;
+  gap:clamp(.5rem,2vw,1.25rem);flex-wrap:wrap;
+}
+.names .n{display:inline-block}
+.names .amp{color:var(--brass);font-size:.9em}
+
+.hero .eyebrow{margin-bottom:1.5rem}
+.hero-date{
+  margin:1.9rem 0 0;font-size:.76rem;font-weight:400;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--ink-2);text-wrap:balance;
+}
+
+.cue{
+  display:flex;flex-direction:column;align-items:center;gap:.8rem;
+  justify-self:center;text-decoration:none;
+}
+.cue span{font-size:.6rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3)}
+.cue i{display:block;width:1px;height:3.5rem;background:var(--line);position:relative;overflow:hidden}
+.cue i::after{
+  content:"";position:absolute;inset-inline:0;top:-45%;height:45%;
+  background:var(--brass);animation:trickle 2.8s ease-in-out infinite;
+}
+@keyframes trickle{0%{top:-45%}65%,100%{top:100%}}
+
+/* ---------- rules ---------- */
+.rule{display:flex;align-items:center;gap:1.1rem;width:min(22rem,80%);margin-inline:auto}
+.rule::before,.rule::after{content:"";flex:1;height:1px;background:var(--line)}
+.rule svg{width:3.4rem;height:auto;overflow:visible;flex:none}
+
+/* ---------- countdown ---------- */
+.count{display:flex;justify-content:center;align-items:stretch;flex-wrap:wrap}
+.unit{padding-inline:clamp(.85rem,4vw,2.4rem);text-align:center;min-width:4.6rem}
+.unit + .unit{border-left:1px solid var(--line)}
+.unit b{
+  display:block;font-family:var(--serif);font-weight:400;
+  font-variant-numeric:tabular-nums;
+  font-size:clamp(2rem,1.1rem + 4.6vw,4rem);line-height:1.15;
+}
+.unit i{
+  display:block;font-style:normal;font-size:.6rem;font-weight:500;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--ink-2);margin-top:.5rem;
+}
+
+/* ---------- engraved details plate ---------- */
+.plate{
+  width:min(38rem,100%);margin-inline:auto;position:relative;
+  border:1px solid var(--line);
+  background:linear-gradient(178deg,rgba(255,252,246,.55),rgba(255,252,246,0));
+  padding:clamp(1.9rem,1rem + 4vw,3rem) clamp(1.25rem,4vw,3rem);
+}
+.plate::before{content:"";position:absolute;inset:7px;border:1px solid var(--line-brass);pointer-events:none}
+.fact{padding-block:clamp(1.2rem,3vw,1.7rem);display:flex;flex-direction:column;gap:.55rem;align-items:center}
+.fact + .fact{border-top:1px solid var(--line)}
+.fact .k{font-size:.62rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--brass-2)}
+.fact .v{font-family:var(--serif);font-size:clamp(1.3rem,1rem + 1.7vw,2.1rem);line-height:1.3;text-wrap:balance}
+.fact .n{font-size:.88rem;color:var(--ink-2);margin:0}
+.fact a{color:var(--brass-2);text-underline-offset:3px}
+.fact a:hover{color:var(--ink)}
+
+/* Plate and map stack on narrow screens; side by side once there is
+   genuinely room for two readable columns. */
+.details-grid{display:grid;gap:clamp(1.5rem,3vw,2.5rem);width:100%;justify-items:center}
+
+@media (min-width:64rem){
+  .details-grid{grid-template-columns:1fr 1fr;align-items:stretch;justify-items:stretch}
+  .details-grid > .plate,
+  .details-grid > .map{width:100%;max-width:none;margin:0}
+  .details-grid > .plate{display:flex;flex-direction:column;justify-content:center}
+  .details-grid > .map{height:100%}
+  .details-grid > .map .map-frame{aspect-ratio:auto;flex:1;min-height:18rem}
+}
+
+/* ---------- map ---------- */
+.map{width:min(38rem,100%);margin:0 auto;display:flex;flex-direction:column;gap:1rem}
+.map-frame{
+  position:relative;aspect-ratio:16/10;overflow:hidden;
+  border:1px solid var(--line);background:var(--paper-2);
+}
+.map-frame::after{
+  content:"";position:absolute;inset:7px;border:1px solid var(--line-brass);
+  pointer-events:none;z-index:2;
+}
+.map-frame iframe{
+  position:absolute;inset:0;width:100%;height:100%;border:0;display:block;
+  /* warmed to sit on the paper, full colour once you reach for it */
+  filter:sepia(.24) saturate(.82) contrast(.96);transition:filter .5s ease;
+}
+.map-frame:hover iframe,.map-frame:focus-within iframe{filter:none}
+.map-fallback{
+  position:absolute;inset:0;display:none;place-content:center;
+  gap:.7rem;text-align:center;padding:1.75rem;
+  color:var(--ink-2);font-size:.9rem;line-height:1.6;
+}
+.map-frame.is-blocked .map-fallback{display:grid}
+.map-frame.is-blocked iframe{display:none}
+.map-fallback p{margin:0}
+.map figcaption{text-align:center}
+.map-link{
+  font-family:var(--sans);font-size:.66rem;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--brass-2);text-decoration:none;
+  border-bottom:1px solid var(--line-brass);padding-bottom:2px;
+}
+.map-link:hover{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* ---------- rsvp ---------- */
+.form{width:min(31rem,100%);margin-inline:auto;text-align:left;display:flex;flex-direction:column;gap:1.9rem}
+.field{display:flex;flex-direction:column;gap:.45rem}
+.field label{font-size:.62rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-2)}
+.field .help{font-size:.83rem;line-height:1.55;color:var(--ink-3);margin:0 0 .15rem}
+.field input,.field textarea{
+  font-family:var(--sans);font-weight:300;font-size:1rem;color:var(--ink);
+  background:transparent;border:0;border-bottom:1px solid var(--line);
+  padding:.55rem .1rem;border-radius:0;transition:border-color .25s ease;
+}
+.field textarea{resize:vertical;min-height:4.5rem;line-height:1.6}
+.field input:focus,.field textarea:focus{outline:none;border-bottom-color:var(--brass)}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink-3)}
+.err{font-size:.78rem;color:#9B4A32;margin:0}
+
+.choice-wrap{border:0;padding:0;margin:0;min-width:0}
+.choice-wrap legend{
+  font-size:.62rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--ink-2);padding:0;margin-bottom:.85rem;
+}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.opt{
+  font-family:var(--serif);font-size:1rem;color:var(--ink);
+  background:transparent;border:1px solid var(--line);
+  padding:1rem .75rem;cursor:pointer;text-align:center;line-height:1.35;
+  transition:border-color .25s ease,background-color .25s ease,color .25s ease;
+}
+.opt small{
+  display:block;font-family:var(--sans);font-size:.6rem;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-top:.4rem;
+  transition:color .25s ease;
+}
+.opt:hover{border-color:var(--ink-3)}
+.opt[aria-pressed="true"]{border-color:var(--brass);background:rgba(168,133,63,.09);color:var(--brass-2)}
+.opt[aria-pressed="true"] small{color:var(--brass-2)}
+
+.guests{display:flex;align-items:center;gap:1rem}
+.step{
+  width:2.4rem;height:2.4rem;border:1px solid var(--line);background:transparent;
+  font-family:var(--serif);font-size:1.1rem;color:var(--ink);cursor:pointer;
+  transition:border-color .25s ease,color .25s ease;
+}
+.step:hover{border-color:var(--brass);color:var(--brass-2)}
+.guests output{
+  font-family:var(--serif);font-size:1.35rem;
+  min-width:3rem;height:2.4rem;display:grid;place-items:center;
+  border-bottom:1px solid var(--line);
+  font-variant-numeric:tabular-nums;
+}
+
+.send{
+  font-family:var(--sans);font-weight:500;font-size:.72rem;
+  letter-spacing:.28em;text-transform:uppercase;
+  background:var(--brass-2);color:var(--paper);border:1px solid var(--brass-2);
+  padding:1.05rem 1.5rem;cursor:pointer;transition:background-color .25s ease,border-color .25s ease;
+}
+.send:hover{background:var(--ink);border-color:var(--ink)}
+.send[disabled]{opacity:.55;cursor:progress}
+
+.done{
+  width:min(31rem,100%);margin-inline:auto;
+  display:flex;flex-direction:column;align-items:center;gap:1.15rem;text-align:center;
+}
+.done svg{width:4.4rem;height:auto}
+.linkish{
+  background:none;border:0;padding:0;cursor:pointer;font-family:var(--sans);
+  font-size:.66rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-3);border-bottom:1px solid var(--line);
+}
+.linkish:hover{color:var(--brass-2);border-bottom-color:var(--brass)}
+
+/* ---------- music ---------- */
+.music{
+  position:fixed;top:1.15rem;right:1.15rem;z-index:30;
+  width:2.9rem;height:2.9rem;border-radius:50%;
+  border:1px solid var(--line-brass);background:rgba(239,231,218,.88);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--brass-2);
+  display:grid;place-items:center;cursor:pointer;
+  transition:border-color .3s ease,transform .3s ease;
+}
+.music:hover{border-color:var(--brass);transform:scale(1.06)}
+.music svg{width:1.05rem;height:1.05rem}
+.bars{display:flex;align-items:flex-end;gap:2px;height:.85rem}
+.bars i{width:2px;background:currentColor;height:30%;animation:eq 1.1s ease-in-out infinite}
+.bars i:nth-child(2){animation-delay:.2s}
+.bars i:nth-child(3){animation-delay:.42s}
+@keyframes eq{0%,100%{height:28%}50%{height:100%}}
+.music[data-on="false"] .bars{display:none}
+.music[data-on="true"] .note{display:none}
+
+.hint{
+  position:fixed;top:1.6rem;right:4.6rem;z-index:30;margin:0;
+  font-size:.58rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-2);background:rgba(239,231,218,.92);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  border:1px solid var(--line);padding:.45rem .75rem;white-space:nowrap;
+  opacity:0;transform:translateX(6px);transition:opacity .6s ease,transform .6s ease;
+  pointer-events:none;
+}
+.hint.show{opacity:1;transform:none}
+
+/* ---------- footer ---------- */
+/* flows straight out of the RSVP band - reply and sign-off read as one closing panel */
+footer{
+  padding-block:clamp(2rem,5vh,3.5rem) clamp(3rem,7vh,4.5rem);text-align:center;
+  background:var(--paper-3);position:relative;z-index:2;
+}
+.mono{font-size:.62rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);margin:0}
+footer .pair{font-family:var(--display);font-style:italic;font-size:1.9rem;letter-spacing:.01em;margin:.7rem 0}
+
+/* ---------- motion ---------- */
+.reveal{
+  opacity:0;transform:translateY(24px);
+  transition:opacity .9s ease var(--rd,0s),transform .9s cubic-bezier(.2,.75,.25,1) var(--rd,0s);
+}
+.reveal.in{opacity:1;transform:none}
+
+.sprout{
+  transform-box:fill-box;transform-origin:50% 100%;
+  transform:scale(.02) rotate(-10deg);opacity:0;
+  transition:transform 1.15s cubic-bezier(.18,.86,.3,1) var(--d,0s),opacity .8s ease var(--d,0s);
+}
+.sprout.mid{transform-origin:50% 50%;transform:scale(.02) rotate(-40deg)}
+.grown .sprout{transform:scale(1) rotate(0);opacity:1}
+.stem{stroke-dashoffset:var(--len);transition:stroke-dashoffset 2.4s cubic-bezier(.35,.1,.3,1)}
+.grown .stem{stroke-dashoffset:0}
+
+/* script joins would break if animated letter by letter, so each name
+   settles as one word - an ink bloom coming into focus */
+.word{
+  display:inline-block;opacity:0;
+  filter:blur(12px);transform:translateY(.12em) scale(.97);
+  transition:opacity 1.5s ease var(--wd,0s),
+             filter 1.5s ease var(--wd,0s),
+             transform 1.5s cubic-bezier(.2,.8,.3,1) var(--wd,0s);
+}
+.lit .word{opacity:1;filter:blur(0);transform:none}
+
+:where(a,button,input,textarea):focus-visible{outline:2px solid var(--brass-2);outline-offset:3px}
+
+@media (max-width:480px){
+  /* stack the names rather than letting the ampersand hang off "Sufyan" */
+  .names{flex-direction:column;align-items:center;gap:0}
+  .names .amp{font-size:.66em;line-height:1.2}
+}
+
+@media (max-width:520px){
+  .choice{grid-template-columns:1fr}
+  .unit{padding-inline:.8rem;min-width:4.1rem}
+  .music{top:.8rem;right:.8rem}
+  .hint{top:1.22rem;right:4.1rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+  .reveal,.sprout,.word{opacity:1;transform:none;filter:none}
+  #petals{display:none}
+}
+</style>
+<!--/A:HEAD-->
+</head>
+<body>
+<!--A:BODY-->
+<canvas id="petals" aria-hidden="true"></canvas>
+<div id="progress" aria-hidden="true"></div>
+
+<button class="music" id="music" data-on="false" aria-pressed="false" aria-label="Play background music">
+  <svg class="note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M9 17V4l11-2v13"/><circle cx="6" cy="17.5" r="3"/><circle cx="17" cy="15.5" r="3"/>
+  </svg>
+  <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+</button>
+<p class="hint" id="hint" aria-hidden="true">Play music</p>
+
+<!-- shared floral drawings -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <g id="leaf">
+    <path d="M0 0C9 -13 11 -30 0 -44C-11 -30 -9 -13 0 0Z" fill="#7E8663"/>
+    <path d="M0 -4V-38" stroke="#EFE7DA" stroke-width="1.1" stroke-linecap="round" opacity=".5"/>
+  </g>
+  <g id="leaf-dark">
+    <path d="M0 0C8 -12 10 -28 0 -41C-10 -28 -8 -12 0 0Z" fill="#616B4B"/>
+    <path d="M0 -4V-35" stroke="#EFE7DA" stroke-width="1" stroke-linecap="round" opacity=".38"/>
+  </g>
+  <g id="bloom">
+    <g fill="#D9BFB4">
+      <path d="M0 0C8 -3 12 -12 9 -19C6.5 -24.5 -6.5 -24.5 -9 -19C-12 -12 -8 -3 0 0Z"/>
+      <path d="M0 0C8 -3 12 -12 9 -19C6.5 -24.5 -6.5 -24.5 -9 -19C-12 -12 -8 -3 0 0Z" transform="rotate(72)"/>
+      <path d="M0 0C8 -3 12 -12 9 -19C6.5 -24.5 -6.5 -24.5 -9 -19C-12 -12 -8 -3 0 0Z" transform="rotate(144)"/>
+      <path d="M0 0C8 -3 12 -12 9 -19C6.5 -24.5 -6.5 -24.5 -9 -19C-12 -12 -8 -3 0 0Z" transform="rotate(216)"/>
+      <path d="M0 0C8 -3 12 -12 9 -19C6.5 -24.5 -6.5 -24.5 -9 -19C-12 -12 -8 -3 0 0Z" transform="rotate(288)"/>
+    </g>
+    <circle r="4.2" fill="#A8853F"/>
+  </g>
+  <g id="bloom-cream">
+    <g fill="#F5EDE0" stroke="#DCCBB2" stroke-width=".8">
+      <path d="M0 0C7 -3 10.5 -10 8 -16.5C5.7 -21.5 -5.7 -21.5 -8 -16.5C-10.5 -10 -7 -3 0 0Z"/>
+      <path d="M0 0C7 -3 10.5 -10 8 -16.5C5.7 -21.5 -5.7 -21.5 -8 -16.5C-10.5 -10 -7 -3 0 0Z" transform="rotate(72)"/>
+      <path d="M0 0C7 -3 10.5 -10 8 -16.5C5.7 -21.5 -5.7 -21.5 -8 -16.5C-10.5 -10 -7 -3 0 0Z" transform="rotate(144)"/>
+      <path d="M0 0C7 -3 10.5 -10 8 -16.5C5.7 -21.5 -5.7 -21.5 -8 -16.5C-10.5 -10 -7 -3 0 0Z" transform="rotate(216)"/>
+      <path d="M0 0C7 -3 10.5 -10 8 -16.5C5.7 -21.5 -5.7 -21.5 -8 -16.5C-10.5 -10 -7 -3 0 0Z" transform="rotate(288)"/>
+    </g>
+    <circle r="3.6" fill="#C2A25F"/>
+  </g>
+  <g id="bud">
+    <path d="M0 -8C6 -13 7 -23 0 -29C-7 -23 -6 -13 0 -8Z" fill="#D9BFB4"/>
+    <path d="M0 0V-9" stroke="#7E8663" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <g id="berry">
+    <circle cx="0" cy="-5" r="3.2" fill="#8A6C2E"/>
+    <circle cx="5.5" cy="-11" r="2.5" fill="#A8853F"/>
+    <circle cx="-4.5" cy="-12" r="2.1" fill="#8A6C2E"/>
+  </g>
+</defs></svg>
+
+<main class="page">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <svg class="arch" id="arch" viewBox="0 0 900 330" fill="none" aria-hidden="true" focusable="false"></svg>
+      <p class="eyebrow">Together with their families</p>
+      <h1 class="names">
+        <span class="n word" style="--wd:.65s">Sufyan</span><span
+              class="amp word" style="--wd:1.0s">&amp;</span><span
+              class="n word" style="--wd:1.3s">Jana</span>
+      </h1>
+      <p class="hero-date">Saturday, the tenth of October &mdash; two thousand twenty-six</p>
+    </div>
+    <a class="cue" href="#invitation"><span>Scroll</span><i></i></a>
+  </section>
+
+  <!-- ============ INVITATION ============ -->
+  <section id="invitation">
+    <div class="shell stack">
+      <p class="eyebrow reveal">The invitation</p>
+      <h2 class="section-title reveal" style="--rd:.08s">
+        Please join us as we celebrate<br>the beginning of our life together.
+      </h2>
+      <div class="rule reveal" style="--rd:.16s" data-ornament></div>
+      <p class="lede reveal" style="--rd:.24s">
+        We are being married on the tenth of October, and we would be honoured
+        to have you with us &mdash; for the evening, and for everything after it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ COUNTDOWN ============ -->
+  <section class="band" id="countdown">
+    <div class="shell stack">
+      <p class="eyebrow reveal">Counting the days</p>
+      <div class="count reveal" style="--rd:.1s" id="count">
+        <div class="unit"><b data-cd="days">&mdash;</b><i>Days</i></div>
+        <div class="unit"><b data-cd="hours">&mdash;</b><i>Hours</i></div>
+        <div class="unit"><b data-cd="minutes">&mdash;</b><i>Minutes</i></div>
+        <div class="unit"><b data-cd="seconds">&mdash;</b><i>Seconds</i></div>
+      </div>
+      <p class="lede reveal" style="--rd:.2s" id="cd-note">until we say yes.</p>
+    </div>
+  </section>
+
+  <!-- ============ DETAILS ============ -->
+  <section id="details">
+    <div class="shell stack">
+      <p class="eyebrow reveal">The details</p>
+      <h2 class="section-title reveal" style="--rd:.08s">Where to find us</h2>
+      <div class="rule reveal" style="--rd:.14s" data-ornament></div>
+      <div class="details-grid">
+      <div class="plate reveal" style="--rd:.2s" id="plate">
+        <div class="fact">
+          <span class="k">The day</span>
+          <span class="v">Saturday, 10 October 2026</span>
+        </div>
+        <div class="fact">
+          <span class="k">The hour</span>
+          <span class="v">7 o&rsquo;clock in the evening</span>
+          <p class="n">Onwards into the night</p>
+        </div>
+        <div class="fact">
+          <span class="k">The place</span>
+          <span class="v" id="f-venue">Ch&acirc;teau Hasen</span>
+          <p class="n" id="f-address">Address and directions to follow</p>
+        </div>
+      </div>
+
+      <figure class="map reveal" style="--rd:.26s">
+        <div class="map-frame" id="map-frame-wrap">
+          <iframe id="map-frame" title="Map of the venue" loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <div class="map-fallback">
+            <p id="map-fallback-msg">The map can&rsquo;t be shown here.</p>
+            <p id="map-fallback-cta"><a class="map-link" id="map-fallback-link" href="#" target="_blank" rel="noopener">Open in Google Maps</a></p>
+          </div>
+        </div>
+        <figcaption>
+          <a class="map-link" id="map-open" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
+        </figcaption>
+      </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RSVP ============ -->
+  <section class="band" id="rsvp">
+    <div class="shell stack">
+      <p class="eyebrow reveal">The favour of a reply</p>
+      <h2 class="section-title reveal" style="--rd:.08s">Will you be there?</h2>
+      <div class="rule reveal" style="--rd:.14s" data-ornament></div>
+      <p class="lede reveal" style="--rd:.2s" id="rsvp-note">
+        Let us know either way &mdash; it helps us set the table, and we would
+        rather hear from you than wonder.
+      </p>
+
+      <form class="form reveal" style="--rd:.26s" id="form" novalidate>
+        <div class="field">
+          <label for="name">First and last name</label>
+          <p class="help" id="name-help">
+            Please write your first and last name exactly as they appear in the
+            WhatsApp message we sent you, so we can match your reply to your invitation.
+          </p>
+          <input id="name" name="name" type="text" autocomplete="name"
+                 aria-describedby="name-help" placeholder="First and last name">
+          <p class="err" id="err-name" role="alert"></p>
+        </div>
+
+        <fieldset class="choice-wrap">
+          <legend>Your answer</legend>
+          <div class="choice">
+            <button type="button" class="opt" data-att="yes" aria-pressed="false">
+              Joyfully accepts<small>I&rsquo;ll be there</small>
+            </button>
+            <button type="button" class="opt" data-att="no" aria-pressed="false">
+              Regretfully declines<small>I can&rsquo;t make it</small>
+            </button>
+          </div>
+          <p class="err" id="err-att" role="alert"></p>
+        </fieldset>
+
+        <div class="field" id="guests-field" hidden>
+          <label for="guests-out">How many of you, in total?</label>
+          <div class="guests">
+            <button type="button" class="step" id="minus" aria-label="One fewer guest">&minus;</button>
+            <output id="guests-out" for="minus plus">1</output>
+            <button type="button" class="step" id="plus" aria-label="One more guest">+</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="note">A note for us <span style="letter-spacing:.1em;text-transform:none;font-weight:300">(optional)</span></label>
+          <textarea id="note" name="note" rows="3" placeholder="Song requests, dietary needs, or anything at all"></textarea>
+        </div>
+
+        <button type="submit" class="send" id="send">Send our reply</button>
+        <p class="err" id="err-form" role="alert" style="text-align:center"></p>
+      </form>
+
+      <div class="done" id="done" hidden>
+        <svg viewBox="-34 -34 68 68" aria-hidden="true" focusable="false">
+          <use href="#bloom" id="done-bloom"></use>
+        </svg>
+        <h3 class="section-title" id="done-title"></h3>
+        <p class="lede" id="done-body"></p>
+        <button type="button" class="linkish" id="redo">Change my reply</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="mono">10 &middot; 10 &middot; 2026</p>
+    <p class="pair">Sufyan &amp; Jana</p>
+    <p class="mono">sufyanandjana.com</p>
+  </footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   1. EDIT ME - everything the invitation needs is right here.
+   ============================================================ */
+var INVITATION = {
+  // Pinned to Beirut time (UTC+3 on this date), so a guest in Berlin or Dubai
+  // counts down to the same moment you do, not to 7pm wherever they are.
+  when:        new Date("2026-10-10T19:00:00+03:00"),
+  venue:       "Shater Hassan Palace",
+  address:     "Tripoli Highway, Ras Masqa El Chmeliyeh, Lebanon",
+
+  // What the embedded map searches for. The full street address gives an exact
+  // pin; the venue name alone may land on the wrong place or nothing at all.
+  mapQuery:    "Shater Hassan Palace, Tripoli Highway, Ras Masqa El Chmeliyeh, Lebanon",
+  mapUrl:      null,   // optional: your own Google Maps share link
+
+  // The recording that plays. If it can't be reached, the page performs the
+  // original piano piece further down instead of failing silently.
+  musicFile:   "music/face-in-the-photograph.mp3",
+
+  // Start the music on its own. Browsers refuse to play sound before the
+  // visitor has interacted, so if the browser blocks it we start on their
+  // first scroll or tap instead. Set false to require pressing the button.
+  autoplay:    true,
+
+  rsvpDeadline:null,   // e.g. "Kindly reply by 1 September 2026"
+  rsvpEndpoint:null    // e.g. "/api/rsvp" or a Formspree URL. null = saves in the browser only.
+};
+
+/* The hosted preview has no music/ folder next to it, so the preview build
+   inlines a compressed copy of the track into #track-data. On your own
+   server that element doesn't exist and the path above is used as written,
+   at full quality. */
+var embeddedTrack = document.getElementById("track-data");
+if(embeddedTrack) INVITATION.musicFile = embeddedTrack.textContent.trim();
+
+var NS = "http://www.w3.org/2000/svg";
+var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* deterministic pseudo-random, so the arch looks the same every load */
+function seeded(seed){
+  return function(){
+    seed = seed + 0x6D2B79F5 | 0;
+    var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+/* ============================================================
+   2. The floral arch - a branch that draws itself, then sprouts
+   ============================================================ */
+function buildArch(svg){
+  var cx = 450, cy = 296, rx = 372, ry = 226;
+  var rand = seeded(20261010);
+  var A0 = Math.PI * 1.035, A1 = -Math.PI * 0.035;
+  var at = function(t){
+    var a = A0 + (A1 - A0) * t;
+    return { x: cx + rx * Math.cos(a), y: cy - ry * Math.sin(a), a: a };
+  };
+
+  /* the branch itself */
+  var d = "", i, p;
+  for(i = 0; i <= 60; i++){
+    p = at(i / 60);
+    d += (i ? "L" : "M") + p.x.toFixed(1) + " " + p.y.toFixed(1);
+  }
+  var stem = document.createElementNS(NS, "path");
+  stem.setAttribute("d", d);
+  stem.setAttribute("class", "stem");
+  stem.setAttribute("stroke", "#7E8663");
+  stem.setAttribute("stroke-width", "1.6");
+  stem.setAttribute("stroke-linecap", "round");
+  stem.setAttribute("fill", "none");
+  stem.setAttribute("opacity", ".7");
+  svg.appendChild(stem);
+  var len = stem.getTotalLength();
+  stem.style.setProperty("--len", len);
+  stem.style.strokeDasharray = len;
+
+  /* foliage growing out of it */
+  var N = 52;
+  for(i = 0; i < N; i++){
+    var t = i / (N - 1);
+    p = at(t);
+
+    /* outward normal, converted to an SVG rotation where 0deg points up */
+    var out = (i % 2 === 0) ? 1 : -1;
+    var dirX = Math.cos(p.a) * out;
+    var dirY = -Math.sin(p.a) * out;
+    var deg = Math.atan2(dirX, -dirY) * 180 / Math.PI + (rand() - 0.5) * 46;
+
+    var kind, scale, mid = false;
+    var r = rand();
+    if(i % 7 === 3){        kind = "#bloom";       scale = 0.72 + rand() * 0.5;  mid = true; }
+    else if(i % 11 === 5){  kind = "#bloom-cream"; scale = 0.62 + rand() * 0.42; mid = true; }
+    else if(i % 9 === 7){   kind = "#bud";         scale = 0.6  + rand() * 0.35; }
+    else if(i % 13 === 4){  kind = "#berry";       scale = 0.7  + rand() * 0.3;  }
+    else {                  kind = r > 0.55 ? "#leaf-dark" : "#leaf";
+                            scale = 0.42 + rand() * 0.42; }
+
+    /* the arch is widest at the top, sparser at the two feet */
+    scale *= 0.55 + 0.45 * Math.sin(Math.PI * t);
+
+    var anchor = document.createElementNS(NS, "g");
+    anchor.setAttribute("transform",
+      "translate(" + p.x.toFixed(1) + "," + p.y.toFixed(1) + ") rotate(" + deg.toFixed(1) + ")");
+
+    var sprout = document.createElementNS(NS, "g");
+    sprout.setAttribute("class", "sprout" + (mid ? " mid" : ""));
+    sprout.style.setProperty("--d", (0.45 + t * 1.75 + rand() * 0.18).toFixed(2) + "s");
+
+    var use = document.createElementNS(NS, "use");
+    use.setAttribute("href", kind);
+    use.setAttribute("transform", "scale(" + scale.toFixed(3) + ")");
+    if(mid) use.setAttribute("transform", "scale(" + scale.toFixed(3) + ") rotate(" + (rand() * 360).toFixed(0) + ")");
+
+    sprout.appendChild(use);
+    anchor.appendChild(sprout);
+    svg.appendChild(anchor);
+  }
+}
+
+/* small sprig used to break the hairline rules */
+function fillOrnaments(){
+  var marks = document.querySelectorAll("[data-ornament]");
+  for(var i = 0; i < marks.length; i++){
+    var svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("viewBox", "-42 -26 84 34");
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("focusable", "false");
+    var parts = [
+      ["#leaf",      "translate(-11,5) rotate(-64) scale(.36)"],
+      ["#leaf",      "translate(11,5) rotate(64) scale(.36)"],
+      ["#leaf-dark", "translate(-20,5) rotate(-84) scale(.26)"],
+      ["#leaf-dark", "translate(20,5) rotate(84) scale(.26)"],
+      ["#bloom",     "translate(0,-6) scale(.44)"]
+    ];
+    for(var j = 0; j < parts.length; j++){
+      var u = document.createElementNS(NS, "use");
+      u.setAttribute("href", parts[j][0]);
+      u.setAttribute("transform", parts[j][1]);
+      svg.appendChild(u);
+    }
+    marks[i].appendChild(svg);
+  }
+}
+
+/* ============================================================
+   3. Drifting petals
+   ============================================================ */
+var Petals = (function(){
+  var cv = document.getElementById("petals"), ctx, w, h, dpr, list = [], raf = null;
+  var tints = ["#D9BFB4", "#E4D3C4", "#DFD2BD", "#C9B79C", "#E9DDCB"];
+
+  function size(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = cv.clientWidth; h = cv.clientHeight;
+    cv.width = w * dpr; cv.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function make(burst){
+    var base = w < 640 ? 3.6 : 5;
+    return {
+      x: Math.random() * w,
+      y: burst ? burst.y : -40 - Math.random() * h * 0.6,
+      s: base + Math.random() * base * 1.5,
+      rot: Math.random() * Math.PI * 2,
+      vr: (Math.random() - 0.5) * 0.022,
+      vy: 0.22 + Math.random() * 0.55,
+      vx: (Math.random() - 0.5) * 0.35,
+      sway: 0.4 + Math.random() * 1.1,
+      ph: Math.random() * Math.PI * 2,
+      a: 0.28 + Math.random() * 0.42,
+      c: tints[(Math.random() * tints.length) | 0],
+      life: burst ? 1 : 0
+    };
+  }
+  function petal(p){
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rot);
+    ctx.globalAlpha = p.a * (p.life ? Math.max(0, 1 - p.age / 260) : 1);
+    ctx.fillStyle = p.c;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.bezierCurveTo(p.s * .62, -p.s * .45, p.s * .74, -p.s * 1.5, 0, -p.s * 2.1);
+    ctx.bezierCurveTo(-p.s * .74, -p.s * 1.5, -p.s * .62, -p.s * .45, 0, 0);
+    ctx.fill();
+    ctx.restore();
+  }
+  function tick(){
+    ctx.clearRect(0, 0, w, h);
+    for(var i = list.length - 1; i >= 0; i--){
+      var p = list[i];
+      p.ph += 0.012;
+      p.x += p.vx + Math.sin(p.ph) * p.sway * 0.35;
+      p.y += p.vy;
+      p.rot += p.vr;
+      if(p.life){
+        p.age = (p.age || 0) + 1;
+        p.vy += 0.012;
+        if(p.age > 260 || p.y > h + 60){ list.splice(i, 1); continue; }
+      } else if(p.y > h + 60){
+        p.y = -50; p.x = Math.random() * w;
+      }
+      petal(p);
+    }
+    raf = requestAnimationFrame(tick);
+  }
+  function start(){
+    if(reduced || !cv.getContext) return;
+    ctx = cv.getContext("2d");
+    size();
+    var n = w < 640 ? 14 : 26;
+    for(var i = 0; i < n; i++){
+      var p = make(); p.y = Math.random() * h; list.push(p);
+    }
+    tick();
+    var to;
+    window.addEventListener("resize", function(){
+      clearTimeout(to); to = setTimeout(size, 150);
+    });
+  }
+  function burst(x, y, n){
+    if(reduced || !ctx) return;
+    for(var i = 0; i < n; i++){
+      var p = make({ y: y });
+      p.x = x + (Math.random() - 0.5) * 160;
+      p.y = y + (Math.random() - 0.5) * 40;
+      p.vy = -2.4 - Math.random() * 2.6;
+      p.vx = (Math.random() - 0.5) * 4.5;
+      p.age = 0;
+      list.push(p);
+    }
+  }
+  return { start: start, burst: burst };
+})();
+
+/* ============================================================
+   4. Countdown
+   ============================================================ */
+function countdown(){
+  var slots = {};
+  ["days","hours","minutes","seconds"].forEach(function(k){
+    slots[k] = document.querySelector('[data-cd="' + k + '"]');
+  });
+  var note = document.getElementById("cd-note");
+  var pad = function(n){ return n < 10 ? "0" + n : "" + n; };
+
+  function tick(){
+    var diff = INVITATION.when - new Date();
+    if(diff <= 0){
+      slots.days.textContent = "0";
+      slots.hours.textContent = slots.minutes.textContent = slots.seconds.textContent = "00";
+      note.textContent = "Today is the day.";
+      clearInterval(timer);
+      return;
+    }
+    var s = Math.floor(diff / 1000);
+    slots.days.textContent    = Math.floor(s / 86400);
+    slots.hours.textContent   = pad(Math.floor(s / 3600) % 24);
+    slots.minutes.textContent = pad(Math.floor(s / 60) % 60);
+    slots.seconds.textContent = pad(s % 60);
+  }
+  var timer = setInterval(tick, 1000);
+  tick();
+}
+
+/* ============================================================
+   5. Scroll: reveals + progress
+   ============================================================ */
+function scrollBits(){
+  var bar = document.getElementById("progress");
+  var ticking = false;
+  function paint(){
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+    ticking = false;
+  }
+  window.addEventListener("scroll", function(){
+    if(!ticking){ ticking = true; requestAnimationFrame(paint); }
+  }, { passive: true });
+  paint();
+
+  var items = document.querySelectorAll(".reveal");
+  if(!("IntersectionObserver" in window)){
+    for(var i = 0; i < items.length; i++) items[i].classList.add("in");
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+  for(var j = 0; j < items.length; j++) io.observe(items[j]);
+}
+
+/* ============================================================
+   6. Music.
+
+   Two engines. If INVITATION.musicFile names a file, that recording plays.
+   Otherwise the browser performs the original solo-piano piece below - no
+   file to load, nothing to licence, and it never repeats a download.
+   ============================================================ */
+var Piano = (function(){
+  var ctx = null, master, wet, dry, timer = null, playing = false;
+  var bar = 0, nextTime = 0;
+  var BPM = 68, BEAT = 60 / BPM, BAR = BEAT * 4;
+
+  /* An original solo-piano piece in D major - eight bars that loop.
+     `root` is the left hand's low note, `ch` the chord above it,
+     `mel` the right hand as [beat, note, beats held]. */
+  var SONG = [
+    { root: 38, ch: [57, 62, 66], mel: [[0, 74, 1.5], [1.5, 76, .5], [2, 78, 2]] },  // D
+    { root: 37, ch: [57, 61, 64], mel: [[0, 76, 1], [1, 78, 1], [2, 81, 2]] },       // A/C#
+    { root: 35, ch: [59, 62, 66], mel: [[0, 83, 1.5], [1.5, 81, .5], [2, 78, 2]] },  // Bm
+    { root: 42, ch: [57, 61, 66], mel: [[0, 78, 1], [1, 76, 1], [2, 73, 2]] },       // F#m
+    { root: 43, ch: [55, 59, 62], mel: [[0, 74, 1], [1, 76, 1], [2, 79, 2]] },       // G
+    { root: 38, ch: [57, 62, 66], mel: [[0, 78, 2], [2, 81, 2]] },                   // D
+    { root: 40, ch: [55, 59, 62], mel: [[0, 79, 1.5], [1.5, 78, .5], [2, 76, 2]] },  // Em7
+    { root: 45, ch: [57, 61, 64], mel: [[0, 73, 1], [1, 74, 3]] }                    // A
+  ];
+  /* the left hand rolls up and back down through root - octave - chord */
+  var ARP = [0, 1, 2, 3, 2, 1, 2, 3];
+
+  function hz(midi){ return 440 * Math.pow(2, (midi - 69) / 12); }
+
+  function build(){
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if(!AC) return false;
+    ctx = new AC();
+
+    master = ctx.createGain();
+    master.gain.value = 0;
+    master.connect(ctx.destination);
+
+    /* a soft hall, made from decaying noise */
+    var secs = 3.2, n = Math.floor(ctx.sampleRate * secs);
+    var imp = ctx.createBuffer(2, n, ctx.sampleRate);
+    for(var c = 0; c < 2; c++){
+      var data = imp.getChannelData(c);
+      for(var i = 0; i < n; i++){
+        data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / n, 2.7);
+      }
+    }
+    var verb = ctx.createConvolver();
+    verb.buffer = imp;
+
+    wet = ctx.createGain(); wet.gain.value = 0.5;
+    dry = ctx.createGain(); dry.gain.value = 0.72;
+    verb.connect(wet); wet.connect(master); dry.connect(master);
+
+    bus = ctx.createGain();
+    bus.connect(dry); bus.connect(verb);
+    return true;
+  }
+  var bus;
+
+  /* struck-string tone: a few sine partials under one decaying envelope */
+  function pluck(midi, at, dur, level){
+    var f = hz(midi);
+    var env = ctx.createGain();
+    env.gain.setValueAtTime(0.0001, at);
+    env.gain.linearRampToValueAtTime(level, at + 0.014);
+    env.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+    env.connect(bus);
+
+    var partials = [[1, 1], [2, 0.3], [3, 0.11], [4.01, 0.045]];
+    for(var i = 0; i < partials.length; i++){
+      var o = ctx.createOscillator();
+      o.type = "sine";
+      o.frequency.value = f * partials[i][0];
+      var g = ctx.createGain();
+      g.gain.value = partials[i][1];
+      o.connect(g); g.connect(env);
+      o.start(at); o.stop(at + dur + 0.1);
+    }
+  }
+
+  /* slow string pad underneath the chord */
+  function pad(notes, at, dur){
+    for(var i = 0; i < notes.length; i++){
+      var f = hz(notes[i]);
+      var lp = ctx.createBiquadFilter();
+      lp.type = "lowpass"; lp.frequency.value = 780; lp.Q.value = 0.5;
+      var g = ctx.createGain();
+      g.gain.setValueAtTime(0.0001, at);
+      g.gain.linearRampToValueAtTime(0.013, at + 1.3);
+      g.gain.setValueAtTime(0.013, at + dur - 0.8);
+      g.gain.linearRampToValueAtTime(0.0001, at + dur + 0.5);
+      lp.connect(g); g.connect(bus);
+
+      for(var k = 0; k < 2; k++){
+        var o = ctx.createOscillator();
+        o.type = "sawtooth";
+        o.frequency.value = f * (k ? 1.0035 : 1);
+        o.connect(lp);
+        o.start(at); o.stop(at + dur + 0.7);
+      }
+    }
+  }
+
+  function scheduleBar(){
+    var m = SONG[bar % SONG.length], at = nextTime, i;
+
+    /* left hand: a rolling broken chord, leaning on the downbeat */
+    var lh = [m.root, m.root + 12, m.ch[0], m.ch[1]];
+    for(i = 0; i < ARP.length; i++){
+      pluck(lh[ARP[i]], at + i * BEAT * 0.5, 2.4, i === 0 ? 0.125 : 0.058);
+    }
+
+    /* the barest halo underneath, so the reverb has something to hold */
+    pad(m.ch, at, BAR);
+
+    /* right hand */
+    for(i = 0; i < m.mel.length; i++){
+      pluck(m.mel[i][1], at + m.mel[i][0] * BEAT, m.mel[i][2] * BEAT + 0.9, 0.1);
+    }
+
+    nextTime += BAR;
+    bar++;
+  }
+
+  function pump(){
+    while(nextTime < ctx.currentTime + 1.2) scheduleBar();
+  }
+
+  function start(){
+    if(!ctx && !build()) return false;
+    if(ctx.state === "suspended") ctx.resume();
+    if(!playing){
+      nextTime = ctx.currentTime + 0.15;
+      playing = true;
+      pump();
+      timer = setInterval(pump, 250);
+    }
+    master.gain.cancelScheduledValues(ctx.currentTime);
+    master.gain.setValueAtTime(master.gain.value, ctx.currentTime);
+    master.gain.linearRampToValueAtTime(0.3, ctx.currentTime + 2.2);
+    return true;
+  }
+
+  function stop(){
+    if(!ctx || !playing) return;
+    master.gain.cancelScheduledValues(ctx.currentTime);
+    master.gain.setValueAtTime(master.gain.value, ctx.currentTime);
+    master.gain.linearRampToValueAtTime(0.0001, ctx.currentTime + 1.1);
+    setTimeout(function(){
+      if(!playing) return;
+      clearInterval(timer); timer = null; playing = false;
+      ctx.suspend();
+    }, 1200);
+  }
+
+  return {
+    toggle: function(){
+      /* only "stop" if it is genuinely sounding - a suspended context means
+         the browser refused to start, and the right move is to try again */
+      if(playing && ctx && ctx.state === "running"){ stop(); return false; }
+      return start();
+    },
+    isPlaying: function(){ return playing && !!ctx && ctx.state === "running"; }
+  };
+})();
+
+/* Plays a real audio file, fading in and out so it never snaps on.
+   The file is several megabytes, so nothing is fetched until someone
+   actually asks for music. */
+var Track = (function(){
+  var el = null, fader = null, playing = false, wanted = false, onFail = null;
+
+  function fail(){
+    playing = false;
+    clearInterval(fader);
+    if(onFail){ var cb = onFail; onFail = null; cb(wanted); }
+  }
+
+  function element(){
+    if(!el){
+      el = new Audio(INVITATION.musicFile);
+      el.loop = true;
+      el.preload = "none";
+      el.volume = 0;
+      el.addEventListener("error", fail);
+    }
+    return el;
+  }
+  function fade(to, ms, thenPause){
+    clearInterval(fader);
+    var a = element(), from = a.volume, t0 = Date.now();
+    fader = setInterval(function(){
+      var k = Math.min(1, (Date.now() - t0) / ms);
+      a.volume = Math.max(0, Math.min(1, from + (to - from) * k));
+      if(k === 1){
+        clearInterval(fader);
+        if(thenPause) a.pause();
+      }
+    }, 40);
+  }
+
+  return {
+    toggle: function(){
+      var a = element();
+      if(playing){
+        playing = false; wanted = false;
+        fade(0, 1100, true);
+        return false;
+      }
+      wanted = true;
+      var p = a.play();
+      if(p && p.catch) p.catch(function(err){
+        clearInterval(fader);
+        a.volume = 0;
+        /* A blocked autoplay is not a broken file - the recording is fine,
+           the browser is just waiting for the visitor to interact. Don't
+           burn the fallback on it; we retry on their first gesture. */
+        if(!err || err.name !== "NotAllowedError") fail();
+      });
+      playing = true;
+      fade(0.6, 2000, false);
+      return true;
+    },
+    /* ground truth, not a hopeful flag: play() can be refused after it returns */
+    isPlaying: function(){ return !!el && !el.paused; },
+    whenUnavailable: function(cb){ onFail = cb; }
+  };
+})();
+
+function musicUI(){
+  var btn = document.getElementById("music");
+  var hint = document.getElementById("hint");
+  var engine = INVITATION.musicFile ? Track : Piano;
+
+  function paint(on){
+    btn.dataset.on = on ? "true" : "false";
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+    btn.setAttribute("aria-label", on ? "Pause background music" : "Play background music");
+  }
+
+  /* Set once someone deliberately silences it, so nothing turns it back on. */
+  var silenced = false;
+
+  btn.addEventListener("click", function(){
+    var on = engine.toggle();
+    silenced = !on;
+    paint(on);
+    hint.classList.remove("show");
+  });
+
+  /* If the recording is missing or the browser won't decode it, play the
+     piano instead rather than leaving a dead button. */
+  if(engine === Track){
+    Track.whenUnavailable(function(wasWanted){
+      engine = Piano;
+      paint(wasWanted && !silenced ? Piano.toggle() : false);
+    });
+  }
+
+  function begin(){
+    if(silenced || engine.isPlaying()) return;
+    engine.toggle();
+    /* play() and resume() settle asynchronously, and either can still be
+       refused, so let the button follow what is actually sounding. */
+    setTimeout(function(){ paint(engine.isPlaying()); }, 400);
+  }
+
+  if(INVITATION.autoplay){
+    begin();
+
+    /* Whatever the browser decided, the first gesture gets us sound. */
+    var gestures = ["pointerdown", "keydown", "touchstart", "wheel", "scroll"];
+    var wake = function(){
+      for(var i = 0; i < gestures.length; i++){
+        window.removeEventListener(gestures[i], wake, true);
+      }
+      begin();
+    };
+    for(var g = 0; g < gestures.length; g++){
+      window.addEventListener(gestures[g], wake, { capture: true, passive: true });
+    }
+  }
+
+  /* invite once, quietly, then get out of the way */
+  setTimeout(function(){
+    if(!engine.isPlaying() && !silenced) hint.classList.add("show");
+  }, 2600);
+  setTimeout(function(){ hint.classList.remove("show"); }, 9000);
+}
+
+/* ============================================================
+   7. RSVP
+   ============================================================ */
+function rsvp(){
+  var form = document.getElementById("form");
+  var done = document.getElementById("done");
+  var opts = form.querySelectorAll(".opt");
+  var guestsField = document.getElementById("guests-field");
+  var out = document.getElementById("guests-out");
+  var send = document.getElementById("send");
+  var attending = null, guests = 1;
+
+  function store(key, val){
+    try{
+      if(val === null) localStorage.removeItem(key);
+      else localStorage.setItem(key, JSON.stringify(val));
+    }catch(e){}
+  }
+  function load(key){
+    try{ return JSON.parse(localStorage.getItem(key)); }catch(e){ return null; }
+  }
+  function err(id, msg){ document.getElementById(id).textContent = msg || ""; }
+  function clearErrors(){ ["err-name","err-att","err-form"].forEach(function(i){ err(i, ""); }); }
+
+  for(var i = 0; i < opts.length; i++){
+    opts[i].addEventListener("click", function(){
+      attending = this.dataset.att;
+      for(var k = 0; k < opts.length; k++){
+        opts[k].setAttribute("aria-pressed", opts[k] === this ? "true" : "false");
+      }
+      guestsField.hidden = (attending !== "yes");
+      err("err-att", "");
+    });
+  }
+
+  document.getElementById("minus").addEventListener("click", function(){
+    guests = Math.max(1, guests - 1); out.textContent = guests;
+  });
+  document.getElementById("plus").addEventListener("click", function(){
+    guests = Math.min(12, guests + 1); out.textContent = guests;
+  });
+
+  function showDone(reply){
+    var t = document.getElementById("done-title");
+    var b = document.getElementById("done-body");
+    var name = (reply.name || "").split(" ")[0];
+    if(reply.attending === "yes"){
+      t.textContent = "Wonderful — we'll see you there.";
+      b.textContent = "Your place is kept" + (reply.guests > 1 ? ", all " + reply.guests + " of you" : "") +
+        ". We'll be in touch closer to the day with everything you need.";
+      var r = done.getBoundingClientRect();
+      Petals.burst(r.left + r.width / 2, r.top + r.height / 2, 34);
+    } else {
+      t.textContent = "Thank you for telling us" + (name ? ", " + name : "") + ".";
+      b.textContent = "We'll miss you on the night — and we'll raise a glass to you anyway.";
+    }
+    form.hidden = true;
+    done.hidden = false;
+  }
+
+  document.getElementById("redo").addEventListener("click", function(){
+    store("sj-rsvp", null);
+    done.hidden = true;
+    form.hidden = false;
+    form.reset();
+    attending = null; guests = 1; out.textContent = "1";
+    guestsField.hidden = true;
+    for(var k = 0; k < opts.length; k++) opts[k].setAttribute("aria-pressed", "false");
+    clearErrors();
+    document.getElementById("name").focus();
+  });
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    clearErrors();
+
+    var name = document.getElementById("name").value.trim().replace(/\s+/g, " ");
+    var note = document.getElementById("note").value.trim();
+    var bad = false;
+
+    if(name.length < 2){
+      err("err-name", "Please write your name.");
+      bad = true;
+    } else if(name.split(" ").length < 2){
+      err("err-name", "Please include both names, exactly as in our WhatsApp message.");
+      bad = true;
+    }
+    if(!attending){ err("err-att", "Choose one — accepting or declining."); bad = true; }
+    if(bad) return;
+
+    var reply = {
+      name: name, attending: attending,
+      guests: attending === "yes" ? guests : 0,
+      note: note, sentAt: new Date().toISOString()
+    };
+
+    send.disabled = true;
+    send.textContent = "Sending…";
+
+    var finish = function(){
+      store("sj-rsvp", reply);
+      send.disabled = false;
+      send.textContent = "Send our reply";
+      showDone(reply);
+    };
+
+    if(!INVITATION.rsvpEndpoint){ setTimeout(finish, 450); return; }
+
+    fetch(INVITATION.rsvpEndpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(reply)
+    }).then(function(res){
+      if(!res.ok) throw new Error(res.status);
+      finish();
+    }).catch(function(){
+      send.disabled = false;
+      send.textContent = "Send our reply";
+      err("err-form", "We couldn't send that just now. Please try again in a moment.");
+    });
+  });
+
+  /* someone who already replied comes back */
+  var prior = load("sj-rsvp");
+  if(prior && prior.attending){
+    form.hidden = true;
+    done.hidden = false;
+    var t = document.getElementById("done-title");
+    var b = document.getElementById("done-body");
+    if(prior.attending === "yes"){
+      t.textContent = "You're on the list.";
+      b.textContent = "We have you down" + (prior.guests > 1 ? " for " + prior.guests : "") +
+        ". Changed your mind, or your numbers? You can update your reply below.";
+    } else {
+      t.textContent = "You've already replied.";
+      b.textContent = "We have you down as unable to come. If that changes, you can update your reply below.";
+    }
+  }
+}
+
+/* ============================================================
+   8. Details driven by the config above
+   ============================================================ */
+function details(){
+  document.getElementById("f-venue").textContent = INVITATION.venue;
+
+  var addr = document.getElementById("f-address");
+  if(INVITATION.address){
+    addr.textContent = INVITATION.address;
+    if(INVITATION.mapUrl){
+      var a = document.createElement("a");
+      a.href = INVITATION.mapUrl;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = "View on the map";
+      addr.appendChild(document.createElement("br"));
+      addr.appendChild(a);
+    }
+  }
+
+  if(INVITATION.rsvpDeadline){
+    var note = document.getElementById("rsvp-note");
+    var em = document.createElement("em");
+    em.className = "it";
+    em.textContent = " " + INVITATION.rsvpDeadline + ".";
+    note.appendChild(em);
+  }
+}
+
+/* ============================================================
+   9. The map
+   ============================================================ */
+function initMap(){
+  var frame = document.getElementById("map-frame");
+  var wrap = document.getElementById("map-frame-wrap");
+
+  /* The venue NAME on its own is not enough: Google happily resolves it to a
+     different château in another country. A wrong pin on a wedding invitation
+     is worse than no pin, so the map stays dark until there is a real address
+     (or an explicit mapUrl) to point at. */
+  var q = INVITATION.mapQuery || INVITATION.address;
+  if(!q && !INVITATION.mapUrl){
+    wrap.classList.add("is-blocked");
+    document.getElementById("map-fallback-msg").textContent =
+      "The map appears here once the venue address is set.";
+    document.getElementById("map-fallback-cta").hidden = true;
+    document.getElementById("map-open").hidden = true;
+    return;
+  }
+
+  var search = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q || INVITATION.venue);
+  document.getElementById("map-open").href = INVITATION.mapUrl || search;
+  document.getElementById("map-fallback-link").href = INVITATION.mapUrl || search;
+  frame.src = "https://www.google.com/maps?q=" + encodeURIComponent(q || INVITATION.venue) + "&output=embed";
+
+  /* If a page's policy blocks the embed, the frame never leaves about:blank -
+     which stays same-origin and therefore readable. A real Google Maps
+     document throws on that read, and that throw is our success signal. */
+  setTimeout(function(){
+    var loaded;
+    try{ loaded = frame.contentWindow.location.href !== "about:blank"; }
+    catch(e){ loaded = true; }
+    if(!loaded) wrap.classList.add("is-blocked");
+  }, 2500);
+}
+
+/* ============================================================
+   10. Go
+   ============================================================ */
+function init(){
+  fillOrnaments();
+  buildArch(document.getElementById("arch"));
+  details();
+  initMap();
+  countdown();
+  scrollBits();
+  musicUI();
+  rsvp();
+  Petals.start();
+
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      document.getElementById("arch").classList.add("grown");
+      document.querySelector(".names").classList.add("lit");
+    });
+  });
+}
+
+if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+else init();
+})();
+</script>
+<!--/A:BODY-->
+</body>
+</html>
