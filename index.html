@@ -1426,17 +1426,24 @@ function initMap(){
   var search = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q || INVITATION.venue);
   document.getElementById("map-open").href = INVITATION.mapUrl || search;
   document.getElementById("map-fallback-link").href = INVITATION.mapUrl || search;
+
+  /* The iframe's own "load" event is a real signal that the embed came
+     back, not a guess - unlike timing a fixed window and checking whether
+     it has left about:blank yet, which reads as "blocked" on any
+     connection slow enough not to have finished navigating in time (a
+     phone on cellular, say) even though the map is on its way. Only treat
+     it as genuinely blocked (CSP, an ad blocker, no network) if "load"
+     still hasn't fired after a generous wait. */
+  var settled = false;
+  frame.addEventListener("load", function(){
+    settled = true;
+    wrap.classList.remove("is-blocked");
+  });
   frame.src = "https://www.google.com/maps?q=" + encodeURIComponent(q || INVITATION.venue) + "&output=embed";
 
-  /* If a page's policy blocks the embed, the frame never leaves about:blank -
-     which stays same-origin and therefore readable. A real Google Maps
-     document throws on that read, and that throw is our success signal. */
   setTimeout(function(){
-    var loaded;
-    try{ loaded = frame.contentWindow.location.href !== "about:blank"; }
-    catch(e){ loaded = true; }
-    if(!loaded) wrap.classList.add("is-blocked");
-  }, 2500);
+    if(!settled) wrap.classList.add("is-blocked");
+  }, 8000);
 }
 
 /* ============================================================
