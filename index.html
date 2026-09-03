@@ -91,8 +91,8 @@ section{padding-block:var(--band);position:relative}
 
 /* ---------- hero ---------- */
 .hero{
-  min-height:100svh;padding-block:clamp(3rem,9vh,5.5rem) 3rem;
-  display:grid;grid-template-rows:1fr auto;align-content:center;gap:2rem;
+  min-height:100svh;padding-block:clamp(3rem,9vh,5.5rem);
+  display:flex;align-items:center;justify-content:center;
 }
 .hero-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .arch{width:min(56rem,100%);height:auto;display:block;margin-bottom:clamp(-4.5rem,-7vw,-2rem)}
@@ -113,18 +113,6 @@ section{padding-block:var(--band);position:relative}
   margin:1.9rem 0 0;font-size:.76rem;font-weight:400;
   letter-spacing:.26em;text-transform:uppercase;color:var(--ink-2);text-wrap:balance;
 }
-
-.cue{
-  display:flex;flex-direction:column;align-items:center;gap:.8rem;
-  justify-self:center;text-decoration:none;
-}
-.cue span{font-size:.6rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3)}
-.cue i{display:block;width:1px;height:3.5rem;background:var(--line);position:relative;overflow:hidden}
-.cue i::after{
-  content:"";position:absolute;inset-inline:0;top:-45%;height:45%;
-  background:var(--brass);animation:trickle 2.8s ease-in-out infinite;
-}
-@keyframes trickle{0%{top:-45%}65%,100%{top:100%}}
 
 /* ---------- rules ---------- */
 .rule{display:flex;align-items:center;gap:1.1rem;width:min(22rem,80%);margin-inline:auto}
@@ -221,6 +209,8 @@ section{padding-block:var(--band);position:relative}
 .field input:focus,.field textarea:focus{outline:none;border-bottom-color:var(--brass)}
 .field input::placeholder,.field textarea::placeholder{color:var(--ink-3)}
 .err{font-size:.78rem;color:#9B4A32;margin:0}
+
+#party-names{display:flex;flex-direction:column;gap:1.3rem;margin-top:.3rem}
 
 .choice-wrap{border:0;padding:0;margin:0;min-width:0}
 .choice-wrap legend{
@@ -441,7 +431,6 @@ footer .pair{font-family:var(--display);font-style:italic;font-size:1.9rem;lette
       </h1>
       <p class="hero-date">Saturday, the tenth of October &mdash; two thousand twenty-six</p>
     </div>
-    <a class="cue" href="#invitation"><span>Scroll</span><i></i></a>
   </section>
 
   <!-- ============ INVITATION ============ -->
@@ -559,6 +548,13 @@ footer .pair{font-family:var(--display);font-style:italic;font-size:1.9rem;lette
           </div>
         </div>
 
+        <div class="field" id="party-field" hidden>
+          <label>Who&rsquo;s joining you</label>
+          <p class="help">The full name of each guest in your party, so we can seat everyone.</p>
+          <div id="party-names"></div>
+          <p class="err" id="err-party" role="alert"></p>
+        </div>
+
         <div class="field">
           <label for="note">A note for us <span style="letter-spacing:.1em;text-transform:none;font-weight:300">(optional)</span></label>
           <textarea id="note" name="note" rows="3" placeholder="Song requests, dietary needs, or anything at all"></textarea>
@@ -615,7 +611,11 @@ var INVITATION = {
   autoplay:    true,
 
   rsvpDeadline:null,   // e.g. "Kindly reply by 1 September 2026"
-  rsvpEndpoint:null    // e.g. "/api/rsvp" or a Formspree URL. null = saves in the browser only.
+
+  // The URL of your deployed Google Apps Script (see google-apps-script/Code.gs
+  // and its README section for the one-time setup). Each reply becomes a row
+  // in your Google Sheet. Left null, replies just stay in the guest's browser.
+  rsvpEndpoint:null
 };
 
 /* The hosted preview has no music/ folder next to it, so the preview build
@@ -1189,6 +1189,8 @@ function rsvp(){
   var guestsField = document.getElementById("guests-field");
   var out = document.getElementById("guests-out");
   var send = document.getElementById("send");
+  var partyField = document.getElementById("party-field");
+  var partyNames = document.getElementById("party-names");
   var attending = null, guests = 1;
 
   function store(key, val){
@@ -1201,7 +1203,36 @@ function rsvp(){
     try{ return JSON.parse(localStorage.getItem(key)); }catch(e){ return null; }
   }
   function err(id, msg){ document.getElementById(id).textContent = msg || ""; }
-  function clearErrors(){ ["err-name","err-att","err-form"].forEach(function(i){ err(i, ""); }); }
+  function clearErrors(){ ["err-name","err-att","err-party","err-form"].forEach(function(i){ err(i, ""); }); }
+
+  /* one name field per extra guest beyond the person filling out the form,
+     kept in step with the counter and reused so a typed name survives a
+     +/- click */
+  function renderParty(){
+    var need = Math.max(0, guests - 1);
+    var existing = partyNames.querySelectorAll("input");
+    var carry = [];
+    for(var i = 0; i < existing.length; i++) carry.push(existing[i].value);
+
+    partyNames.innerHTML = "";
+    for(var g = 0; g < need; g++){
+      var field = document.createElement("div");
+      field.className = "field";
+      var label = document.createElement("label");
+      label.setAttribute("for", "guest-" + g);
+      label.textContent = "Guest " + (g + 2) + "’s full name";
+      var input = document.createElement("input");
+      input.type = "text";
+      input.id = "guest-" + g;
+      input.placeholder = "Full name";
+      input.value = carry[g] || "";
+      field.appendChild(label);
+      field.appendChild(input);
+      partyNames.appendChild(field);
+    }
+    partyField.hidden = need === 0;
+    if(need === 0) err("err-party", "");
+  }
 
   for(var i = 0; i < opts.length; i++){
     opts[i].addEventListener("click", function(){
@@ -1210,15 +1241,16 @@ function rsvp(){
         opts[k].setAttribute("aria-pressed", opts[k] === this ? "true" : "false");
       }
       guestsField.hidden = (attending !== "yes");
+      partyField.hidden = (attending !== "yes") || guests < 2;
       err("err-att", "");
     });
   }
 
   document.getElementById("minus").addEventListener("click", function(){
-    guests = Math.max(1, guests - 1); out.textContent = guests;
+    guests = Math.max(1, guests - 1); out.textContent = guests; renderParty();
   });
   document.getElementById("plus").addEventListener("click", function(){
-    guests = Math.min(12, guests + 1); out.textContent = guests;
+    guests = Math.min(12, guests + 1); out.textContent = guests; renderParty();
   });
 
   function showDone(reply){
@@ -1227,7 +1259,10 @@ function rsvp(){
     var name = (reply.name || "").split(" ")[0];
     if(reply.attending === "yes"){
       t.textContent = "Wonderful — we'll see you there.";
-      b.textContent = "Your place is kept" + (reply.guests > 1 ? ", all " + reply.guests + " of you" : "") +
+      var party = (reply.guestNames && reply.guestNames.length)
+        ? ", with " + reply.guestNames.join(", ")
+        : "";
+      b.textContent = "Your place is kept" + (reply.guests > 1 ? " for all " + reply.guests + " of you" + party : "") +
         ". We'll be in touch closer to the day with everything you need.";
       var r = done.getBoundingClientRect();
       Petals.burst(r.left + r.width / 2, r.top + r.height / 2, 34);
@@ -1246,6 +1281,7 @@ function rsvp(){
     form.reset();
     attending = null; guests = 1; out.textContent = "1";
     guestsField.hidden = true;
+    partyNames.innerHTML = ""; partyField.hidden = true;
     for(var k = 0; k < opts.length; k++) opts[k].setAttribute("aria-pressed", "false");
     clearErrors();
     document.getElementById("name").focus();
@@ -1267,11 +1303,24 @@ function rsvp(){
       bad = true;
     }
     if(!attending){ err("err-att", "Choose one — accepting or declining."); bad = true; }
+
+    var guestNames = [];
+    if(attending === "yes" && guests > 1){
+      var inputs = partyNames.querySelectorAll("input");
+      for(var i = 0; i < inputs.length; i++){
+        guestNames.push(inputs[i].value.trim().replace(/\s+/g, " "));
+      }
+      if(guestNames.some(function(n){ return n.length < 2; })){
+        err("err-party", "Please add a full name for each guest.");
+        bad = true;
+      }
+    }
     if(bad) return;
 
     var reply = {
       name: name, attending: attending,
       guests: attending === "yes" ? guests : 0,
+      guestNames: guestNames,
       note: note, sentAt: new Date().toISOString()
     };
 
@@ -1287,14 +1336,16 @@ function rsvp(){
 
     if(!INVITATION.rsvpEndpoint){ setTimeout(finish, 450); return; }
 
+    /* Google Apps Script web apps don't answer a CORS preflight, so this
+       must stay a "simple" request: no custom headers, and no-cors mode
+       since the redirected response Apps Script sends back can't be read
+       anyway. The row lands in the sheet regardless — we just can't see
+       the response, so we treat a request that didn't throw as success. */
     fetch(INVITATION.rsvpEndpoint, {
       method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      mode: "no-cors",
       body: JSON.stringify(reply)
-    }).then(function(res){
-      if(!res.ok) throw new Error(res.status);
-      finish();
-    }).catch(function(){
+    }).then(finish).catch(function(){
       send.disabled = false;
       send.textContent = "Send our reply";
       err("err-form", "We couldn't send that just now. Please try again in a moment.");
@@ -1310,7 +1361,10 @@ function rsvp(){
     var b = document.getElementById("done-body");
     if(prior.attending === "yes"){
       t.textContent = "You're on the list.";
-      b.textContent = "We have you down" + (prior.guests > 1 ? " for " + prior.guests : "") +
+      var priorParty = (prior.guestNames && prior.guestNames.length)
+        ? ", with " + prior.guestNames.join(", ")
+        : "";
+      b.textContent = "We have you down" + (prior.guests > 1 ? " for " + prior.guests + priorParty : "") +
         ". Changed your mind, or your numbers? You can update your reply below.";
     } else {
       t.textContent = "You've already replied.";
