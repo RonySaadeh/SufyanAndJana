@@ -489,8 +489,7 @@ footer .pair{font-family:var(--display);font-style:italic;font-size:1.9rem;lette
 
       <figure class="map reveal" style="--rd:.26s">
         <div class="map-frame" id="map-frame-wrap">
-          <iframe id="map-frame" title="Map of the venue" loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <iframe id="map-frame" title="Map of the venue" allowfullscreen></iframe>
           <div class="map-fallback">
             <p id="map-fallback-msg">The map can&rsquo;t be shown here.</p>
             <p id="map-fallback-cta"><a class="map-link" id="map-fallback-link" href="#" target="_blank" rel="noopener">Open in Google Maps</a></p>
@@ -1468,7 +1467,7 @@ function initMap(){
 
   setTimeout(function(){
     if(!settled) wrap.classList.add("is-blocked");
-  }, 8000);
+  }, 12000);
 }
 
 /* ============================================================
