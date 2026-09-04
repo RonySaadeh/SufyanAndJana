@@ -32,9 +32,10 @@ Each reply already asks for the replying guest's name, yes/no, a party size,
 and, once the party size is more than one, the full name of every other
 guest coming with them. Wiring that up takes one Apps Script deployment, no
 server of your own required. Every RSVP does two independent things: it
-appends a row to a Google Sheet, and it emails a copy to
-**attarsufyan@gmail.com** — so an email is always sent even if, say, the
-sheet gets renamed or deleted later.
+appends a row to a Google Sheet, and it emails a copy to whoever is listed
+in `NOTIFY_EMAIL` (currently **attarsufyan@gmail.com** and
+**rony.saadehmisc@hotmail.com**) — so an email is always sent even if, say,
+the sheet gets renamed or deleted later.
 
 1. Create a new Google Sheet (any name, e.g. "Sufyan & Jana RSVPs").
 2. In it, go to **Extensions → Apps Script**.
@@ -55,20 +56,37 @@ sheet gets renamed or deleted later.
    `rsvpEndpoint:"https://script.google.com/macros/s/AKfycb.../exec"`.
 8. Commit and push. Every RSVP now appends a row to the sheet's `RSVPs`
    tab (timestamp, name, attending, party size, the other guests' names,
-   and their note) and sends attarsufyan@gmail.com an email with who
-   replied, whether they're attending, the total number of guests, and
-   everyone's names.
+   and their note) and emails `NOTIFY_EMAIL` with who replied, whether
+   they're attending, the total number of guests, and everyone's names.
 
 If `rsvpEndpoint` is left as `null`, RSVPs still work, they're just kept in
 the replying guest's own browser instead of reaching the sheet or the inbox.
 
 If you ever need to change what the script does (including the notification
-email address), edit it directly in the Apps Script editor (script.google.com)
-and choose **Deploy → Manage deployments → Edit → New version** — the URL
-stays the same, so nothing in `index.html` needs to change.
-`google-apps-script/Code.gs` in this repo is kept in sync as the reference
-copy. If that change adds a new permission (it won't, for just changing the
-address), you'll be asked to re-authorize the same way as step 5.
+addresses), edit it directly in the Apps Script editor (script.google.com):
+
+- **Edit the existing deployment, don't create a new one.** Use
+  **Deploy → Manage deployments**, click the pencil on the deployment
+  that's already live, and set **Version** to **New version** before
+  clicking **Deploy**. That keeps the same `/exec` URL, so nothing in
+  `index.html` needs to change. Using **Deploy → New deployment** instead
+  gives you a *different* URL — the live site keeps hitting the old one
+  (running the old code) until you update `rsvpEndpoint` to match, which
+  looks exactly like "nothing happened."
+- If that change adds a new permission (sending email is one; just editing
+  the recipient list isn't), you'll be asked to re-authorize the same way
+  as step 5. Skipping that prompt is the other classic cause of "the sheet
+  updates but no email arrives," since the script silently can't act on a
+  permission it was never granted.
+
+**If an RSVP doesn't produce an email (or a row):** check the **Errors**
+tab in the spreadsheet first — a failed sheet write or a failed send both
+log a row there (When / Where / Error) instead of failing silently. If
+that tab has nothing and the `RSVPs` tab also has nothing for your test,
+the request isn't reaching the script at all — double-check `rsvpEndpoint`
+in `index.html` matches the current deployment's URL exactly. You can also
+open **Executions** in the Apps Script editor's left sidebar to see every
+`doPost` call and, on failure, what threw.
 
 **Sending on Google's free tier is capped at 100 emails/day** (1,500/day on
 a Google Workspace account) — far more than a wedding will ever need, but

@@ -5,9 +5,11 @@
  * one row in this spreadsheet, and emails a copy to NOTIFY_EMAIL. The sheet
  * write and the email are independent: a problem with one still lets the
  * other through, so a full inbox or a renamed tab never loses an RSVP
- * outright. See the setup steps in the repo README.
+ * outright. Any failure gets written to the "Errors" tab of this same
+ * spreadsheet, since the page itself can't tell you why a send failed - see
+ * the repo README if that tab has rows in it.
  */
-var NOTIFY_EMAIL = "attarsufyan@gmail.com";
+var NOTIFY_EMAIL = "attarsufyan@gmail.com, rony.saadehmisc@hotmail.com";
 
 function doPost(e) {
   var data = JSON.parse(e.postData.contents);
@@ -15,13 +17,13 @@ function doPost(e) {
   try {
     appendToSheet(data);
   } catch (sheetError) {
-    // The email below is the fallback, so a sheet problem shouldn't stop it.
+    logError("appendToSheet", sheetError);
   }
 
   try {
     sendNotification(data);
   } catch (emailError) {
-    // Likewise, an email problem shouldn't cost the sheet row above.
+    logError("sendNotification", emailError);
   }
 
   return ContentService
@@ -72,4 +74,21 @@ function sendNotification(data) {
     subject: "RSVP from " + (data.name || "a guest") + ": " + (attending ? "Attending" : "Not attending"),
     body: lines.join("\n")
   });
+}
+
+/* Writes straight into the spreadsheet rather than only the Apps Script
+   execution log, since that log is easy to lose track of but this sheet
+   isn't going anywhere. */
+function logError(where, err) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Errors")
+      || SpreadsheetApp.getActiveSpreadsheet().insertSheet("Errors");
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(["When", "Where", "Error"]);
+      sheet.setFrozenRows(1);
+    }
+    sheet.appendRow([new Date(), where, String((err && err.message) || err)]);
+  } catch (loggingError) {
+    // If writing the error itself fails, there's nowhere left to report it.
+  }
 }
