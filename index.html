@@ -429,7 +429,7 @@ footer .pair{font-family:var(--display);font-style:italic;font-size:1.9rem;lette
               class="amp word" style="--wd:1.0s">&amp;</span><span
               class="n word" style="--wd:1.3s">Jana</span>
       </h1>
-      <p class="hero-date">Saturday, the tenth of October &mdash; two thousand twenty-six</p>
+      <p class="hero-date">Saturday, the tenth of October, two thousand twenty-six</p>
     </div>
   </section>
 
@@ -443,7 +443,7 @@ footer .pair{font-family:var(--display);font-style:italic;font-size:1.9rem;lette
       <div class="rule reveal" style="--rd:.16s" data-ornament></div>
       <p class="lede reveal" style="--rd:.24s">
         We are being married on the tenth of October, and we would be honoured
-        to have you with us &mdash; for the evening, and for everything after it.
+        to have you with us for the evening, and for everything after it.
       </p>
     </div>
   </section>
@@ -453,10 +453,10 @@ footer .pair{font-family:var(--display);font-style:italic;font-size:1.9rem;lette
     <div class="shell stack">
       <p class="eyebrow reveal">Counting the days</p>
       <div class="count reveal" style="--rd:.1s" id="count">
-        <div class="unit"><b data-cd="days">&mdash;</b><i>Days</i></div>
-        <div class="unit"><b data-cd="hours">&mdash;</b><i>Hours</i></div>
-        <div class="unit"><b data-cd="minutes">&mdash;</b><i>Minutes</i></div>
-        <div class="unit"><b data-cd="seconds">&mdash;</b><i>Seconds</i></div>
+        <div class="unit"><b data-cd="days">&hellip;</b><i>Days</i></div>
+        <div class="unit"><b data-cd="hours">&hellip;</b><i>Hours</i></div>
+        <div class="unit"><b data-cd="minutes">&hellip;</b><i>Minutes</i></div>
+        <div class="unit"><b data-cd="seconds">&hellip;</b><i>Seconds</i></div>
       </div>
       <p class="lede reveal" style="--rd:.2s" id="cd-note">until we say yes.</p>
     </div>
@@ -510,7 +510,7 @@ footer .pair{font-family:var(--display);font-style:italic;font-size:1.9rem;lette
       <h2 class="section-title reveal" style="--rd:.08s">Will you be there?</h2>
       <div class="rule reveal" style="--rd:.14s" data-ornament></div>
       <p class="lede reveal" style="--rd:.2s" id="rsvp-note">
-        Let us know either way &mdash; it helps us set the table, and we would
+        Let us know either way. It helps us set the table, and we would
         rather hear from you than wonder.
       </p>
 
@@ -1103,6 +1103,11 @@ var Track = (function(){
       if(p && p.catch) p.catch(function(err){
         clearInterval(fader);
         a.volume = 0;
+        /* The attempt didn't actually take, so the next call must go
+           through "wanted = true; a.play()" again rather than mistaking
+           this rejected attempt for something now playing that needs to
+           be stopped. */
+        playing = false;
         /* A blocked autoplay is not a broken file - the recording is fine,
            the browser is just waiting for the visitor to interact. Don't
            burn the fallback on it; we retry on their first gesture. */
@@ -1159,13 +1164,32 @@ function musicUI(){
   if(INVITATION.autoplay){
     begin();
 
-    /* Whatever the browser decided, the first gesture gets us sound. */
-    var gestures = ["pointerdown", "keydown", "touchstart", "wheel", "scroll"];
-    var wake = function(){
-      for(var i = 0; i < gestures.length; i++){
-        window.removeEventListener(gestures[i], wake, true);
+    /* Whatever the browser decided, the first real gesture gets us sound.
+       "Real" matters: browsers only count click, touchend, keydown and
+       pointerup as the kind of deliberate interaction that unlocks audio -
+       scroll, wheel, touchstart and pointerdown do not, no matter how the
+       visitor reaches the page. Using those wouldn't just be occasionally
+       unreliable, it would never unlock sound at all, silently leaving the
+       explicit button as the only thing that ever worked. Each of those
+       real gestures gets its own attempt (rather than stopping after one)
+       since a still-loading recording can miss the first one, and the
+       listeners only come off once something is genuinely audible. */
+    var gestures = ["click", "touchend", "keydown", "pointerup"];
+    var wake = function(e){
+      /* The music button already toggles itself on click - without this,
+         a first click there would fire both handlers for the same click
+         and start the recording only to immediately stop it again. */
+      if(e && btn.contains(e.target)) return;
+      if(silenced || engine.isPlaying()){
+        for(var i = 0; i < gestures.length; i++) window.removeEventListener(gestures[i], wake, true);
+        return;
       }
       begin();
+      setTimeout(function(){
+        if(engine.isPlaying()){
+          for(var i = 0; i < gestures.length; i++) window.removeEventListener(gestures[i], wake, true);
+        }
+      }, 450);
     };
     for(var g = 0; g < gestures.length; g++){
       window.addEventListener(gestures[g], wake, { capture: true, passive: true });
@@ -1258,7 +1282,7 @@ function rsvp(){
     var b = document.getElementById("done-body");
     var name = (reply.name || "").split(" ")[0];
     if(reply.attending === "yes"){
-      t.textContent = "Wonderful — we'll see you there.";
+      t.textContent = "Wonderful, we'll see you there.";
       var party = (reply.guestNames && reply.guestNames.length)
         ? ", with " + reply.guestNames.join(", ")
         : "";
@@ -1268,7 +1292,7 @@ function rsvp(){
       Petals.burst(r.left + r.width / 2, r.top + r.height / 2, 34);
     } else {
       t.textContent = "Thank you for telling us" + (name ? ", " + name : "") + ".";
-      b.textContent = "We'll miss you on the night — and we'll raise a glass to you anyway.";
+      b.textContent = "We'll miss you on the night, and we'll raise a glass to you anyway.";
     }
     form.hidden = true;
     done.hidden = false;
@@ -1302,7 +1326,7 @@ function rsvp(){
       err("err-name", "Please include both names, exactly as in our WhatsApp message.");
       bad = true;
     }
-    if(!attending){ err("err-att", "Choose one — accepting or declining."); bad = true; }
+    if(!attending){ err("err-att", "Choose one: accepting or declining."); bad = true; }
 
     var guestNames = [];
     if(attending === "yes" && guests > 1){
