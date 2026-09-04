@@ -88,6 +88,14 @@ in `index.html` matches the current deployment's URL exactly. You can also
 open **Executions** in the Apps Script editor's left sidebar to see every
 `doPost` call and, on failure, what threw.
 
+If the sheet gets the row but no email ever arrives, test mail sending on
+its own: in the Apps Script editor, pick **testEmail** from the function
+dropdown next to the **Run** button and click **Run**. This is also the
+most reliable way to trigger Google's "allow this script to send email as
+you" consent screen — a redeploy alone doesn't always surface it, and a
+script that was never granted that permission fails on every single send
+without saying so anywhere the web app itself can show you.
+
 **Sending on Google's free tier is capped at 100 emails/day** (1,500/day on
 a Google Workspace account) — far more than a wedding will ever need, but
 worth knowing if you ever reuse this script elsewhere.

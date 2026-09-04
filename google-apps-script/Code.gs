@@ -76,6 +76,20 @@ function sendNotification(data) {
   });
 }
 
+/* Run this one directly from the Apps Script editor (pick "testEmail" from
+   the function dropdown next to the Run button, then click Run) to test
+   mail sending on its own, outside of a real RSVP. Running a function this
+   way is also what forces Google's permission prompt for whatever that
+   function needs - if a redeploy alone didn't trigger the "send email as
+   you" consent screen, running this will. */
+function testEmail() {
+  MailApp.sendEmail({
+    to: NOTIFY_EMAIL,
+    subject: "Test email from the RSVP script",
+    body: "If this arrived, MailApp is authorized and sending correctly."
+  });
+}
+
 /* Writes straight into the spreadsheet rather than only the Apps Script
    execution log, since that log is easy to lose track of but this sheet
    isn't going anywhere. */
