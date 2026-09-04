@@ -338,9 +338,10 @@ footer .pair{font-family:var(--display);font-style:italic;font-size:1.9rem;lette
 :where(a,button,input,textarea):focus-visible{outline:2px solid var(--brass-2);outline-offset:3px}
 
 @media (max-width:480px){
-  /* stack the names rather than letting the ampersand hang off "Sufyan" */
-  .names{flex-direction:column;align-items:center;gap:0}
-  .names .amp{font-size:.66em;line-height:1.2}
+  /* keep the names on one line rather than the desktop clamp's size,
+     which is scaled for a much wider viewport and would either force a
+     wrap or run edge-to-edge */
+  .names{font-size:clamp(2.1rem,.85rem + 7vw,3.3rem);gap:clamp(.3rem,1.3vw,.55rem);flex-wrap:nowrap}
 }
 
 @media (max-width:520px){
